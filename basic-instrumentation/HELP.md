@@ -12,7 +12,7 @@ For further reference, please consider the following sections:
 follow the below instructions to run the project successfully:
 
 * first build the project
-  * `mvn clean iinstall package`
+  * `mvn clean install package`
 * Download the javaagent in the root folder of the project
   * `curl -L -O https://github.com/open-telemetry/opentelemetry-java-instrumentation/releases/latest/download/opentelemetry-javaagent.jar`
 * from command line run the instruction from the root folder
@@ -22,4 +22,7 @@ follow the below instructions to run the project successfully:
     -Dotel.traces.exporter=logging
     -Dotel.metrics.exporter=logging
     -Dotel.logs.exporter=logging`
+* If the springboot server is running without error, the access the API as below
+  * http://localhost:8080/api/v1/order/12345676
+* watch the console for the trace to appear.
 
