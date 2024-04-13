@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: inventory-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+server:
+  port: 8091
