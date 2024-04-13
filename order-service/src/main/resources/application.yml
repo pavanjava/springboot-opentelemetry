@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: order-service
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  otlp:
+    tracing:
+      endpoint: http://localhost:4318/v1/traces
+  tracing:
+    sampling:
+      probability: 1.0
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+
+server:
+  port: 8090
+
+inventory-service:
+  endpoint: http://localhost:8091/api/v1/deduct-inventory
+
+email-service:
+  endpoint: http://localhost:8092/api/v1/email-notify
